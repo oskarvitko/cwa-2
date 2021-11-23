@@ -70,11 +70,19 @@
 
         btn.addEventListener('click', send)
 
+        getPort()
+
         async function send() {
             const response = await fetch(URL + 'login')
             const data = await response.text()
             input.value = data
         }
-    </script>
+
+        async function getPort() {
+            const response = await fetch(URL + 'port')
+            const data = await response.text()
+            input.value = data
+        }
+     </script>
 </body>
 </html>

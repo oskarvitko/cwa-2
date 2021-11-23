@@ -29,4 +29,8 @@ app.get('/fetch', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
-app.listen(5000, () => console.log(`Server start on PORT ${PORT}`))
+app.get('/port', (req, res) => {
+    res.send(PORT)
+})
+
+app.listen(PORT, () => console.log(`Server start on PORT ${PORT}`))
