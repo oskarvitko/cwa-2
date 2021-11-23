@@ -60,7 +60,7 @@
 </head>
 <body>
     <div class="container">
-        <input id="inp" value="PORT: 5000" type="text">
+        <input id="inp" type="text">
         <button id="bt" type="button">Send</button>
     </div>
     <script >
@@ -81,7 +81,7 @@
         async function getPort() {
             const response = await fetch(URL + 'port')
             const data = await response.text()
-            input.value = data
+            input.value = 'PORT:' + data
         }
      </script>
 </body>
