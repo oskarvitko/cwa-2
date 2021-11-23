@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fetch</title>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .container > * {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .container > *:first-child {
+            margin-top: 100px
+        }
+
+        input:focus, button:focus {
+            outline: none;
+        }
+
+        input, button {
+            box-sizing: border-box;
+            padding: .75em;
+            font-size: 16px;
+            border-radius: none;
+            border: 1px solid purple;
+            background-color: #fff;
+        }
+
+        button {
+            cursor: pointer;
+            color: #000;
+            background: linear-gradient(to right, blue, pink, red);
+            font-weight: 700;
+            font-size: 20px;
+            padding: .5em .75em;
+            border-radius: 4px;
+            box-shadow: 0 8px 0 0 purple;
+
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 0 purple;
+        }
+
+        button:active {
+            transform: translateY(5px);
+            box-shadow: 0 5px 0 0 purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input id="inp" value="PORT: 5000" type="text">
+        <button id="bt" type="button">Send</button>
+    </div>
+    <script >
+        const URL = 'https://cwt-zadanie-2-vitko.herokuapp.com/'
+        const btn = document.getElementById('bt')
+        const input = document.getElementById('inp')
+
+        btn.addEventListener('click', send)
+
+        async function send() {
+            const response = await fetch(URL + 'login')
+            const data = await response.text()
+            input.value = data
+        }
+    </script>
+</body>
+</html>
