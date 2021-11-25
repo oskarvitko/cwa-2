@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000
 
 const SURNAME = 'Oskar Vitko'
 
-const PROMISE = `function task(x){ return new Promise((resolve, reject) => { (x < 18) ? resolve(x) : reject(x) }`
+const PROMISE = `function task(x){ return new Promise((resolve, reject) =>  (x < 18) ? resolve(x) : reject(x))}`
 
 const app = express()
 
