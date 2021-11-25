@@ -60,7 +60,7 @@
 </head>
 <body>
     <div class="container">
-        <input id="inp" type="text">
+        <input id="inp" type="text" value="PORT: 8002">
         <button id="bt" type="button">Send</button>
     </div>
     <script >
@@ -70,18 +70,10 @@
 
         btn.addEventListener('click', send)
 
-        getPort()
-
         async function send() {
             const response = await fetch(URL + 'login')
             const data = await response.text()
             input.value = data
-        }
-
-        async function getPort() {
-            const response = await fetch(URL + 'port')
-            const data = await response.text()
-            input.value = 'PORT: ' + data
         }
      </script>
 </body>
