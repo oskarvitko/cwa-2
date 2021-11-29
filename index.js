@@ -1,36 +1,27 @@
 const express = require('express')
 const cors = require('cors')
 const dotenv = require('dotenv')
-const fs = require('fs')
+const config = require('./config')
 
 dotenv.config()
 
 const PORT = process.env.PORT || 5000
 
-const SURNAME = 'Oskar Vitko'
-
-const PROMISE = `function task(x){ return new Promise((resolve, reject) =>  (x < 18) ? resolve(x) : reject(x))}`
-
 const app = express()
 
+app.use(express.static(config.rootDir + '/pages'))
+app.use(express.json())
 app.use(cors({
     origin: '*'
 }))
 
-app.get('/login', (req, res) => {
-    res.status(200).send(SURNAME)
-})
+app.use('/login', require('./routes/login-routes'))
+app.use('/env', require('./routes/env-routes'))
+app.use('/promise', require('./routes/promise-routes'))
+app.use('/fetch', require('./routes/fetch-routes'))
 
-app.get('/promise', (req, res) => {
-    res.status(200).send(PROMISE)
-})
-
-app.get('/fetch', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-})
-
-app.get('/port', (req, res) => {
-    res.send(PORT)
+app.get('*', (req, res) => {
+    res.sendFile(config.rootDir + '/pages/notFound.html')
 })
 
 app.listen(PORT, () => console.log(`Server start on PORT ${PORT}`))
