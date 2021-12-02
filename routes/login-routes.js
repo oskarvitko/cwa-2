@@ -21,13 +21,11 @@ router.get('/2', (req, res) => {
 
 router.get('/code1', (req, res) => {
     res.setHeader('Content-Type', 'text/html; charset=utf-8')
-    res.setHeader('Accept-Language', 'ru-RU')
     res.status(200).send(code)
 })
 
 router.get('/code2', (req, res) => {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-    res.setHeader('Accept-Language', 'by-BY')
     res.status(200).send(code)
 })
 
